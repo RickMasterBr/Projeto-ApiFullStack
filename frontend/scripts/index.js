@@ -16,7 +16,7 @@ async function buscarTodos() {
         preco.innerText = `R$ ${livro.preco}`;
         imagem.src = livro.imagem;
         link.innerText = "Mais informações";
-        link.setAttribute("href", `http://localhost:3000/livros/${livro.id}`);
+        link.setAttribute("href", `../pages/livro.html?id=${livro.id}`);
 
         div.appendChild(nome);
         div.appendChild(preco);
@@ -26,3 +26,4 @@ async function buscarTodos() {
         container.appendChild(div);
 })}
 
+buscarTodos();

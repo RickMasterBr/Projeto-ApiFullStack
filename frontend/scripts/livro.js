@@ -1,3 +1,11 @@
+// 1. Pegar o elemento HTML onde vamos jogar os dados
+const container = document.getElementById("container");
+
+// 2. Extrair o ID que veio na URL (ex: ?id=3)
+const parametros = new URLSearchParams(window.location.search);
+const id = parametros.get("id");
+
+
 fetch("http://localhost:3000/livros/" + id)
 .then(response => response.json())
 .then(response => {
@@ -14,10 +22,16 @@ fetch("http://localhost:3000/livros/" + id)
     const btnExcluir = document.createElement("button");
     btnExcluir.setAttribute("id", "btnExcluir");
     btnExcluir.innerText = "Excluir";
+
     btnExcluir.addEventListener("click", () => {
-        fetchExcluir("http://localhost:3000/livros/" + id, {
+        fetch("http://localhost:3000/livros/" + id, {
             method: "DELETE"
-        });
+        })
+        .then(() => {
+            alert("Livro excluído com sucesso");
+            window.location.href = "../pages/index.html";
+        })
+        .catch(erro => console.error("Erro ao excluir livro: ", erro));
     })
 
     nome.innerText = response.nome;
