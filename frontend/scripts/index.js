@@ -19,8 +19,8 @@ async function buscarTodos() {
         link.setAttribute("href", `../pages/livro.html?id=${livro.id}`);
 
         div.appendChild(nome);
-        div.appendChild(preco);
         div.appendChild(imagem);
+        div.appendChild(preco);
         div.appendChild(link);
 
         container.appendChild(div);
